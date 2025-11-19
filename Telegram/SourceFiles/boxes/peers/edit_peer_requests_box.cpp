@@ -405,10 +405,7 @@ void RequestsBoxController::prepare() {
 }
 
 object_ptr<Ui::RpWidget> RequestsBoxController::createBatchActionsWidget() {
-	auto result = object_ptr<Ui::FixedHeightWidget>(
-		(QWidget*)nullptr,
-		st::requestsAcceptButton.height + st::requestButtonsSkip * 2);
-
+	auto result = object_ptr<Ui::RpWidget>((QWidget*)nullptr);
 	const auto container = result.data();
 
 	const auto dismissAll = Ui::CreateChild<Ui::RoundButton>(
@@ -433,6 +430,8 @@ object_ptr<Ui::RpWidget> RequestsBoxController::createBatchActionsWidget() {
 	) | rpl::start_with_next([=](int width) {
 		const auto padding = st::requestButtonsSkip * 2;
 		const auto buttonWidth = (width - padding * 3) / 2;
+		const auto height = st::requestsAcceptButton.height + st::requestButtonsSkip * 2;
+		container->resize(width, height);
 		dismissAll->setGeometry(
 			padding,
 			st::requestButtonsSkip,
