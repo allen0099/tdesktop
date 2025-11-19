@@ -45,6 +45,7 @@ Then your language translation filename is `de.json` or something like that.
 ## Build instructions
 
 * Windows [(32-bit)][win32] [(64-bit)][win64]
+  * **Without Visual Studio IDE:** [(32-bit Build Tools)][win32-buildtools] [(64-bit Build Tools)][win64-buildtools]
 * [macOS][mac]
 * [GNU/Linux using Docker][linux]
 
@@ -62,6 +63,8 @@ Then your language translation filename is `de.json` or something like that.
 [license]: LICENSE
 [win32]: docs/building-win.md
 [win64]: docs/building-win-x64.md
+[win32-buildtools]: docs/building-win-buildtools.md
+[win64-buildtools]: docs/building-win-x64-buildtools.md
 [mac]: docs/building-mac.md
 [linux]: docs/building-linux.md
 [preview_image]: https://github.com/TDesktop-x64/tdesktop/blob/dev/docs/assets/preview.png "Preview of 64Gram Desktop"
