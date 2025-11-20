@@ -1034,8 +1034,6 @@ requestsBanAllButton: RoundButton(defaultActiveButton) {
 	width: -28px;
 	height: 30px;
 	textTop: 6px;
-	textFg: attentionButtonFg;
-	textFgOver: attentionButtonFgOver;
 }
 requestAcceptPosition: point(71px, 58px);
 requestButtonsSkip: 9px;
