@@ -400,7 +400,7 @@ void RequestsBoxController::prepare() {
 		: tr::lng_manage_peer_requests());
 	setDescriptionText(tr::lng_contacts_loading(tr::now));
 	setSearchNoResultsText(tr::lng_blocked_list_not_found(tr::now));
-	delegate()->peerListSetAboveSearchWidget(createBatchActionsWidget());
+	delegate()->peerListSetAboveWidget(createBatchActionsWidget());
 	loadMoreRows();
 }
 
@@ -420,7 +420,7 @@ object_ptr<Ui::RpWidget> RequestsBoxController::createBatchActionsWidget() {
 	const auto banAll = Ui::CreateChild<Ui::RoundButton>(
 		container,
 		tr::lng_group_requests_ban_all(),
-		st::requestsBanButton);
+		st::requestsBanAllButton);
 	banAll->setTextTransform(Ui::RoundButton::TextTransform::NoTransform);
 	banAll->setClickedCallback([=] {
 		banAllRequests();

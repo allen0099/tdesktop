@@ -1029,6 +1029,14 @@ requestsBanButton: RoundButton(defaultActiveButton) {
 	width: -28px;
 	height: 30px;
 	textTop: 6px;
+	textBg: attentionButtonBg;
+	textBgOver: attentionButtonBgOver;
+	ripple: RippleAnimation(defaultRippleAnimation) {
+		color: attentionButtonBgRipple;
+	}
+}
+requestsBanAllButton: RoundButton(requestsBanButton) {
+	width: -28px;
 }
 requestAcceptPosition: point(71px, 58px);
 requestButtonsSkip: 9px;
