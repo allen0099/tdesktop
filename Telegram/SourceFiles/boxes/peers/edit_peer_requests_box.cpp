@@ -16,7 +16,6 @@ https://github.com/telegramdesktop/tdesktop/blob/master/LEGAL
 #include "boxes/peers/edit_participants_box.h" // SubscribeToMigration
 #include "boxes/peers/edit_peer_invite_link.h" // PrepareRequestedRowStatus
 #include "boxes/peers/edit_peer_requests_box.h"
-#include "boxes/confirm_box.h"
 #include "data/data_channel.h"
 #include "data/data_chat.h"
 #include "data/data_peer.h"
@@ -34,6 +33,7 @@ https://github.com/telegramdesktop/tdesktop/blob/master/LEGAL
 #include "ui/round_rect.h"
 #include "ui/text/text_utilities.h"
 #include "ui/widgets/buttons.h"
+#include "ui/boxes/confirm_box.h"
 #include "window/window_session_controller.h"
 #include "styles/style_boxes.h"
 
@@ -454,10 +454,9 @@ void RequestsBoxController::dismissAllRequests() {
 	}
 
 	const auto guard = base::make_weak(this);
-	delegate()->peerListUiShow()->showBox(Box(
-		Ui::ConfirmBox,
-		tr::lng_group_requests_dismiss_all_confirm(tr::now),
-		[=] {
+	delegate()->peerListUiShow()->showBox(Ui::MakeConfirmBox({
+		.text = tr::lng_group_requests_dismiss_all_confirm(tr::now),
+		.confirmed = [=] {
 			if (!guard) {
 				return;
 			}
@@ -475,7 +474,8 @@ void RequestsBoxController::dismissAllRequests() {
 			for (const auto user : users) {
 				processRequest(user, false, false);
 			}
-		}));
+		}
+	}));
 }
 
 void RequestsBoxController::banAllRequests() {
@@ -485,10 +485,9 @@ void RequestsBoxController::banAllRequests() {
 	}
 
 	const auto guard = base::make_weak(this);
-	delegate()->peerListUiShow()->showBox(Box(
-		Ui::ConfirmBox,
-		tr::lng_group_requests_ban_all_confirm(tr::now),
-		[=] {
+	delegate()->peerListUiShow()->showBox(Ui::MakeConfirmBox({
+		.text = tr::lng_group_requests_ban_all_confirm(tr::now),
+		.confirmed = [=] {
 			if (!guard) {
 				return;
 			}
@@ -506,7 +505,8 @@ void RequestsBoxController::banAllRequests() {
 			for (const auto user : users) {
 				processRequest(user, false, true);
 			}
-		}));
+		}
+	}));
 }
 
 void RequestsBoxController::loadMoreRows() {
